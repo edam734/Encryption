@@ -1,12 +1,18 @@
 package edu.eduardo.encryption;
 
 import java.security.InvalidKeyException;
+import java.security.Key;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.Signature;
 import java.security.SignatureException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 public class SignatureManager {
 
@@ -23,9 +29,33 @@ public class SignatureManager {
 		}
 	}
 
-	public byte[] usePublicKey(byte[] data) {
+	public byte[] encryptUsingPublicKey(byte[] data) {
+		return operation(data, Cipher.ENCRYPT_MODE, this.keyPair.getPublic());
+	}
 
-		return null;
+	public byte[] encryptUsingPrivateKey(byte[] data) {
+		return operation(data, Cipher.ENCRYPT_MODE, this.keyPair.getPrivate());
+	}
+
+	public byte[] dencryptUsingPublicKey(byte[] data) {
+		return operation(data, Cipher.DECRYPT_MODE, this.keyPair.getPublic());
+	}
+
+	public byte[] dencryptUsingPrivateKey(byte[] data) {
+		return operation(data, Cipher.DECRYPT_MODE, this.keyPair.getPrivate());
+	}
+
+	private byte[] operation(byte[] data, int mode, Key key) {
+		byte[] dataResult = null;
+		try {
+			Cipher cipher = Cipher.getInstance("RSA");
+			cipher.init(mode, key);
+			dataResult = cipher.doFinal(data);
+		} catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException
+				| BadPaddingException e) {
+			e.printStackTrace();
+		}
+		return dataResult;
 	}
 
 	public byte[] sign(byte[] data) {
