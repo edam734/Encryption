@@ -5,7 +5,7 @@ import java.util.Base64;
 public class CryptoApp {
 
 	public static void main(String[] args) {
-		Crypto crypto = new SymetricKeyCrypto();
+		Crypto crypto = new SymmetricKeyCrypto(true, TypeKey.SECRET);
 
 		String data = "Hello World!";
 		System.out.println("Original Text: " + data);
