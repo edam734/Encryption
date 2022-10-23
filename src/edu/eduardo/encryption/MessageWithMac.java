@@ -1,8 +1,8 @@
 package edu.eduardo.encryption;
 
 public class MessageWithMac {
-	String message;
-	byte[] mac;
+	private String message;
+	private byte[] mac;
 
 	public MessageWithMac(String message, byte[] mac) {
 		super();
@@ -14,16 +14,8 @@ public class MessageWithMac {
 		return message;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
 	public byte[] getMac() {
 		return mac;
-	}
-
-	public void setMac(byte[] mac) {
-		this.mac = mac;
 	}
 
 }
