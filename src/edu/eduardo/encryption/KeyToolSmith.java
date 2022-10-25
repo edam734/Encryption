@@ -45,7 +45,6 @@ public class KeyToolSmith {
 		KeyStore ks = null;
 		try {
 			ks = KeyStore.getInstance(KEYSTORE_TYPE);
-			ks.load(null, password.toCharArray());
 			try (FileInputStream in = new FileInputStream(STORE_FOLDER.concat(keyStoreName))) {
 				ks.load(in, password.toCharArray());
 			}
