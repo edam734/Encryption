@@ -71,7 +71,7 @@ public class KeyToolSmith {
 		try {
 			ks.setEntry(alias, secret, protParam);
 			try (FileOutputStream fos = new FileOutputStream(STORE_FOLDER.concat(keyStoreName))) {
-				ks.store(fos, storePwd.toCharArray()); // storePwd could be null
+				ks.store(fos, storePwd.toCharArray());
 			}
 		} catch (KeyStoreException | NoSuchAlgorithmException | CertificateException | IOException e) {
 			e.printStackTrace();
