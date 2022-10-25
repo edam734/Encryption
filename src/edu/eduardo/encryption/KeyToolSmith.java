@@ -22,7 +22,7 @@ import javax.crypto.SecretKey;
  */
 public class KeyToolSmith {
 
-	private static final String STORE_FOLDER = "./stores/";
+	private static final String STORE_FOLDER = "_stores/";
 
 	private static final String KEYSTORE_TYPE = "pkcs12";
 
