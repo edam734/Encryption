@@ -3,7 +3,6 @@ package edu.eduardo.encryption;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.KeyPair;
-import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.Signature;
@@ -20,13 +19,7 @@ public class SignatureManager {
 
 	public SignatureManager() {
 		super();
-		try {
-			KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-			keyPairGenerator.initialize(2048);
-			keyPair = keyPairGenerator.generateKeyPair();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
+		keyPair = KeyToolSmith.generateKeyPair();
 	}
 
 	public byte[] encryptUsingPublicKey(byte[] data) {
