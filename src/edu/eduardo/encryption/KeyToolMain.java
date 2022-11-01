@@ -14,7 +14,7 @@ public class KeyToolMain {
 //		KeyStore keyStore = KeyToolSmith.createKeyStore("changeit", "edkeystore.p12");
 		KeyStore keyStore = KeyToolSmith.loadKeyStore("changeit", "edkeystore.p12");
 //		storeKeyOnKeystore(keyStore); // M5P8W+8T+d8p9HeiggtBQ8h+Qt2DEZsIgXVnaUHhhQI=
-		KeyToolSmith.printAllAliases(keyStore);
+		KeyToolSmith.printAliases(keyStore);
 		readKeyFromKeystore(keyStore);
 
 	}
