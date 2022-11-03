@@ -12,23 +12,23 @@ public class KeyToolMain {
 
 	public static void main(String[] args) {
 //		KeyStore keyStore = KeyToolSmith.createKeyStore("changeit", "edkeystore.p12");
-		KeyStore keyStore = KeyToolSmith.loadKeyStore("changeit", "edkeystore.p12");
+		KeyStore keyStore = KeyStoreManager.loadKeyStore("changeit", "edkeystore.p12");
 //		storeKeyOnKeystore(keyStore); // M5P8W+8T+d8p9HeiggtBQ8h+Qt2DEZsIgXVnaUHhhQI=
-		KeyToolSmith.printAliases(keyStore);
+		KeyStoreManager.printAliases(keyStore);
 		readKeyFromKeystore(keyStore);
 
 	}
 
 	private static void storeKeyOnKeystore(KeyStore keyStore) {
-		SecretKey sKey = KeyToolSmith.generateSecretKey();
+		SecretKey sKey = KeyStoreManager.generateSecretKey();
 		System.out.println(Base64.getEncoder().encodeToString(sKey.getEncoded()));
-		boolean successful = KeyToolSmith.storeSecretKey(keyStore, "changeit", "edkeystore.p12", "789xyz",
+		boolean successful = KeyStoreManager.storeSecretKey(keyStore, "changeit", "edkeystore.p12", "789xyz",
 				"secret-Key-alias", sKey);
 		System.out.println(successful);
 	}
 
 	private static void readKeyFromKeystore(KeyStore keyStore) {
-		SecretKey sKey = KeyToolSmith.getSecretKey(keyStore, "789xyz", "secret-Key-alias");
+		SecretKey sKey = KeyStoreManager.getSecretKey(keyStore, "789xyz", "secret-Key-alias");
 		System.out.println(Base64.getEncoder().encodeToString(sKey.getEncoded()));
 	}
 }

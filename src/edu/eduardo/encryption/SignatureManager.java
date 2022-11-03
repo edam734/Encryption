@@ -19,7 +19,7 @@ public class SignatureManager {
 
 	public SignatureManager() {
 		super();
-		keyPair = KeyToolSmith.generateKeyPair();
+		keyPair = KeyStoreManager.generateKeyPair();
 	}
 
 	public byte[] encryptUsingPublicKey(byte[] data) {

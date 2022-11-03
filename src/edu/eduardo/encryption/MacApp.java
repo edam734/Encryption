@@ -9,7 +9,7 @@ public class MacApp {
 
 	public static void main(String[] args) {
 		// secret key to be shared
-		SecretKey secretKey = KeyToolSmith.generateSecretKey();
+		SecretKey secretKey = KeyStoreManager.generateSecretKey();
 		
 		// Daisy writes a message to me
 		DaisyWrites daisy = new DaisyWrites(secretKey);
